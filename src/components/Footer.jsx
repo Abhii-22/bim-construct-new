@@ -47,38 +47,33 @@ function Footer() {
             </h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/medinischoolofdesign" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  Medini School of Design
+                <Link to="/bim-consulting" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
+                  BIM Consulting
                 </Link>
               </li>
               <li>
-                <Link to="/bim_construct" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  BIM Construct
+                <Link to="/bim-modeling" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
+                  BIM Modeling
                 </Link>
               </li>
               <li>
-                <Link to="/techvritti" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  TechVritti
+                <Link to="/bim-coordination" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
+                  BIM Coordination
                 </Link>
               </li>
               <li>
-                <Link to="/teamech" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  Mechsetu
+                <Link to="/4d-5d-bim" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
+                  4D/5D BIM Services
                 </Link>
               </li>
               <li>
-                <Link to="/eduphygital" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  EDUPHYGITAL
+                <Link to="/bim-implementation" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
+                  BIM Implementation
                 </Link>
               </li>
               <li>
-                <Link to="/digidhvani" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  DigiDhvani
-                </Link>
-              </li>
-              <li>
-                <Link to="/builddspace" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  BuilddSpace
+                <Link to="/bim-training" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
+                  BIM Training
                 </Link>
               </li>
             </ul>
