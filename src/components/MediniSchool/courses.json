@@ -1,0 +1,60 @@
+{
+  "courseProviders": [
+    {
+      "id": "AUTODESK",
+      "name": "Autodesk",
+      "categories": [
+        {
+          "name": "Architecture",
+          "courses": ["Revit Architecture", "AutoCAD Architecture"]
+        },
+        {
+          "name": "Engineering",
+          "courses": ["AutoCAD Civil 3D", "InfraWorks"]
+        },
+        {
+          "name": "Construction",
+          "courses": ["BIM 360", "Navisworks"]
+        }
+      ]
+    },
+    {
+      "id": "BENTLEY",
+      "name": "Bentley Systems",
+      "categories": [
+        {
+          "name": "Civil Engineering",
+          "courses": ["OpenRoads", "OpenRail"]
+        },
+        {
+          "name": "BIM",
+          "courses": ["OpenBuildings", "AECOsim"]
+        }
+      ]
+    },
+    {
+      "id": "DASSAULT",
+      "name": "Dassault Systèmes",
+      "categories": [
+        {
+          "name": "3D Design",
+          "courses": ["CATIA", "SOLIDWORKS"]
+        }
+      ]
+    },
+    {
+      "id": "OTHER",
+      "name": "Other Software",
+      "categories": [
+        {
+          "name": "3D Modeling",
+          "courses": ["SketchUp", "Blender"]
+        },
+        {
+          "name": "Rendering",
+          "courses": ["Lumion", "V-Ray"]
+        }
+      ]
+    }
+  ]
+}
