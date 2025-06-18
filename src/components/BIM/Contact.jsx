@@ -59,12 +59,12 @@ const BimContactSection = () => {
                   Get In Touch
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 dark:text-white">
-                  Let's Discuss Your Design Project
+                  Contact information
                 </h2>
-                <p className="text-gray-600 dark:text-gray-400 text-lg mb-6">
+                {/* <p className="text-gray-600 dark:text-gray-400 text-lg mb-6">
                   Ready to transform your space? Contact us today to schedule a consultation with our design experts.
                   We're excited to bring your vision to life.
-                </p>
+                </p> */}
               </div>
 
               <div className="space-y-6">

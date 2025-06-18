@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react"
 import { Link, NavLink, useLocation } from "react-router-dom"
-import {ChevronDown,} from "lucide-react"
+import { ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import logo from "@/assets/Logos/Medini_logo.png"
 import bimLogo from "@/assets/NAVBAR/BIM Construct.png"
 import eduphygitalLogo from "@/assets/NAVBAR/Eduphygital White.png"
@@ -26,7 +26,6 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isHovered, setIsHovered] = useState(false);
 
-  
   // get all Courses
   const courseCategories = [
     {
@@ -222,36 +221,35 @@ const Header = () => {
           <div className="hidden md:flex items-center space-x-4">
             <div className="flex items-center gap-4">
               <div className="hidden md:flex items-center gap-4">
-                <ThemeToggle />
+               
                 <a
-      href="#"
-      className="relative overflow-hidden inline-flex h-10 items-center justify-center rounded-full bg-amber-100 px-6 py-2 text-sm font-medium text-amber-600 shadow-lg transition-all duration-500 hover:shadow-amber-500/25 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 dark:shadow-lg dark:shadow-blue-700/30 group"
-      onClick={handleClick}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <span className="absolute -z-10 inset-0 rounded-full bg-amber-100 blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-500"></span>
-      <span className="relative z-10 flex items-center">
-        Get Started
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className={`ml-2 h-4 w-4 transform transition-transform duration-300 ${isHovered ? 'translate-x-1' : ''}`}
-        >
-          <path d="M5 12h14" />
-          <path d="m12 5 7 7-7 7" />
-        </svg>
-      </span>
-    </a>
+                  href="#"
+                  className="relative overflow-hidden inline-flex h-10 items-center justify-center rounded-full bg-amber-100 px-6 py-2 text-sm font-medium text-amber-600 shadow-lg transition-all duration-500 hover:shadow-amber-500/25 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 dark:shadow-lg dark:shadow-blue-700/30 group"
+                  onClick={handleClick}
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
+                >
+                  <span className="absolute -z-10 inset-0 rounded-full bg-amber-100 blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-500"></span>
+                  <span className="relative z-10 flex items-center">
+                    Get Started
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className={`ml-2 h-4 w-4 transform transition-transform duration-300 ${isHovered ? 'translate-x-1' : ''}`}
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </span>
+                </a>
               </div>
-              
             </div>
           </div>
 
@@ -259,7 +257,7 @@ const Header = () => {
           <Sheet>
             <SheetTrigger asChild className="md:hidden">
               <Button variant="ghost" size="icon">
-              <div
+                <div
                   className={`absolute w-5 h-0.5 bg-current transition-all duration-500 ${isMobileMenuOpen ? "rotate-45" : "-translate-y-1.5"}`}
                 ></div>
                 <div
@@ -283,10 +281,10 @@ const Header = () => {
                 </Button>
                 {isMediniSchool && (
                   <Button variant="outline" className="w-full flex items-center">
-                  <SheetTrigger asChild className="md:hidden">
-                    <Link to="/courses">Courses</Link>
-                  </SheetTrigger>
-                </Button>
+                    <SheetTrigger asChild className="md:hidden">
+                      <Link to="/courses">Courses</Link>
+                    </SheetTrigger>
+                  </Button>
                 )}
                 <Button variant="outline" className="w-full flex items-center">
                   <SheetTrigger asChild className="md:hidden">
@@ -314,243 +312,6 @@ const Header = () => {
         </div>
       </motion.nav>
 
-      {/* Links */}
-      <AnimatePresence>
-        {showLinks && (
-          <motion.div
-            className="hidden bg-[#406d6e] text-white shadow-md md:flex"
-            initial={{ y: -50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -50, opacity: 0 }}
-            transition={{
-              type: "spring",
-              stiffness: 300,
-              damping: 30,
-              duration: 0.3,
-            }}
-          >
-            <div className="container mx-auto overflow-x-auto hide-scrollbar">
-
-              {!isMediniSchool && !isBimConstruct && !isTeaMech && !isTechVritti && (
-                <div className="flex items-center gap-6 py-3 px-4 min-w-max">
-                <div className="nav-item ">
-                  <Link to="/">Home</Link>
-                </div>
-                <div className="nav-item ">
-                  <Link to="/about">About</Link>
-                </div>
-                <div className="nav-item ">
-                  <Link to="/blog">Blog</Link>
-                </div>
-                <div className="nav-item ">
-                  <Link to="/awards">Awards</Link>
-                </div>
-                <div className="nav-item">
-                  <Link to="/contact">Contact</Link>
-                </div>
-              </div>
-              )}
-
-              {/* medini school navbar */}
-              {isMediniSchool && (
-                <div className="flex items-center gap-6 py-3 px-4 min-w-max">
-                <div className="nav-item">
-                  <Link to="/medinischoolofdesign">Home</Link>
-                </div>
-                {/* Courses */}
-                  <Popover>
-                  <PopoverTrigger className="flex items-center font-semibold hover:text-amber-600 cursor-pointer group px-3">
-                    Courses
-                    <ChevronDown className="ml-1 group-hover:rotate-180 transition-transform" size={16} />
-                  </PopoverTrigger>
-                  <PopoverContent className="w-[800px] p-0">
-                    <div className="flex">
-                      <ScrollArea className="w-1/3 p-4 border-r">
-                        <h4 className="mb-4 text-sm font-medium">AutoDesk</h4>
-                        {courseCategories[0].categories.flatMap(category => 
-                          category.courses.map((course) => (
-                            <Link to={`/medinischoolofdesign/courses/${course.id}`} key={course.id}>
-                              <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                                {course.name}
-                              </div>
-                            </Link>
-                          ))
-                        )}
-                      </ScrollArea>
-                      
-                      <ScrollArea className="w-1/3 p-4 border-r">
-                        <h4 className="mb-4 text-sm font-medium">Bentley Systems</h4>
-                        {courseCategories[1].categories.flatMap(category => 
-                          category.courses.map((course) => (
-                            <Link to={`/medinischoolofdesign/courses/${course.id}`} key={course.id}>
-                              <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                                {course.name}
-                              </div>
-                            </Link>
-                          ))
-                        )}
-                      </ScrollArea>
-                      
-                      <ScrollArea className="w-1/3 p-4 border-r">
-                        <h4 className="mb-4 text-sm font-medium">Dassault</h4>
-                        <Link to={`/medinischoolofdesign/courses/solidworks`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            SolidWorks
-                          </div>
-                        </Link>
-                        <div className="text-sm py-2 font-medium text-gray-700 dark:text-gray-300 mt-3 mb-1">Trimble</div>
-                        <Link to={`/medinischoolofdesign/courses/sketchup`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            SketchUp
-                          </div>
-                        </Link>
-                        <div className="text-sm py-2 font-medium text-gray-700 dark:text-gray-300 mt-3 mb-1">Chaos</div>
-                        <Link to={`/medinischoolofdesign/courses/vray`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            V-Ray
-                          </div>
-                        </Link>
-                        <Link to={`/medinischoolofdesign/courses/enscape`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            Enscape
-                          </div>
-                        </Link>
-                      </ScrollArea>
-                      
-                      <ScrollArea className="w-1/3 p-4 border-r">
-                        <h4 className="mb-4 text-sm font-medium">Others</h4>
-                        <Link to={`/medinischoolofdesign/courses/lumion`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            Lumion
-                          </div>
-                        </Link>
-                        <Link to={`/medinischoolofdesign/courses/rhino`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            Rhino
-                          </div>
-                        </Link>
-                        <Link to={`/medinischoolofdesign/courses/grasshopper`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            Grasshopper
-                          </div>
-                        </Link>
-                        <Link to={`/medinischoolofdesign/courses/photoshop`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            Photoshop
-                          </div>
-                        </Link>
-                        <Link to={`/medinischoolofdesign/courses/illustrator`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            Illustrator
-                          </div>
-                        </Link>
-                        <Link to={`/medinischoolofdesign/courses/etabs`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            ETABS
-                          </div>
-                        </Link>
-                        <Link to={`/medinischoolofdesign/courses/ms-project`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            MS Project
-                          </div>
-                        </Link>
-                        <Link to={`/medinischoolofdesign/courses/qgis`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            QGIS
-                          </div>
-                        </Link>
-                        <Link to={`/medinischoolofdesign/courses/adobe-animate`}>
-                          <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                            Adobe Animate
-                          </div>
-                        </Link>
-                      </ScrollArea>
-                      
-                      <ScrollArea className="w-1/3 p-4 border-r">
-                        <h4 className="mb-4 text-sm font-medium">Programming</h4>
-                        {courseCategories[4].categories.flatMap(category => 
-                          category.courses.map((course) => (
-                            <Link to={`/medinischoolofdesign/courses/${course.id}`} key={course.id}>
-                              <div className="text-sm py-2 cursor-pointer hover:text-amber-600">
-                                {course.name}
-                              </div>
-                            </Link>
-                          ))
-                        )}
-                      </ScrollArea>
-                    </div>
-                  </PopoverContent>
-                </Popover>
-
-                <div className="nav-item">
-                  <Link to="/medinischoolofdesign/about">About</Link>
-                </div>
-                <div className="nav-item">
-                  <Link to="/medinischoolofdesign/contact">Contact</Link>
-                </div>
-              </div>
-              )}
-
-              {/* BIM Construct */}
-              {isBimConstruct && (
-                <div className="flex items-center gap-6 py-3 px-4 min-w-max">
-                <div className="nav-item">
-                  <Link to="/bim_construct">Home</Link>
-                </div>                
-                <div className="nav-item">
-                  <Link to="/bim_construct/services">Services</Link>
-                </div>
-                <div className="nav-item">
-                  <Link to="/bim_construct/about">About</Link>
-                </div>
-                <div className="nav-item">
-                  <Link to="/bim_construct/contact">Contact</Link>
-                </div>
-              </div>
-              )}
-
-              {/* Teamech */}
-              {isTeaMech && (
-                <div className="flex items-center gap-6 py-3 px-4 min-w-max">
-                <div className="nav-item">
-                  <Link to="/teamech">Home</Link>
-                </div>                
-                <div className="nav-item">
-                  <Link to="/teamech/services">Services</Link>
-                </div>
-                <div className="nav-item">
-                  <Link to="/teamech/about">About</Link>
-                </div>
-                <div className="nav-item">
-                  <Link to="/teamech/contact">Contact</Link>
-                </div>
-              </div>
-              
-              )}
-
-              {/* techvritti */}
-              {isTechVritti && (
-                <div className="flex items-center gap-6 py-3 px-4 min-w-max">
-                <div className="nav-item">
-                  <Link to="/techvritti">Home</Link>
-                </div>                
-                <div className="nav-item">
-                  <Link to="/techvritti/services">Services</Link>
-                </div>
-                <div className="nav-item">
-                  <Link to="/techvritti/about">About</Link>
-                </div>
-                <div className="nav-item">
-                  <Link to="/techvritti/contact">Contact</Link>
-                </div>
-              </div>
-              
-              )}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Spacer to push content below the header */}
       <div className={`h-${showLinks ? "28" : "16"} transition-all duration-300`}></div>
     </header>
@@ -558,4 +319,3 @@ const Header = () => {
 }
 
 export default Header
-
