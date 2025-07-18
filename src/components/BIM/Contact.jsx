@@ -1,5 +1,3 @@
-"use client"
-
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Calendar, Clock, MessageSquare } from "lucide-react"
@@ -48,23 +46,19 @@ const BimContactSection = () => {
   }
 
   return (
-    <section className="py-20 bg-white dark:bg-gray-900">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact information */}
             <div>
               <div className="mb-12">
-                <div className="inline-block px-3 py-1 text-sm font-medium text-amber-600 bg-amber-100 rounded-full dark:bg-amber-900/30 dark:text-amber-400 mb-4">
+                <div className="inline-block px-3 py-1 text-sm font-medium text-amber-600 bg-amber-100 rounded-full mb-4">
                   Get In Touch
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 dark:text-white">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
                   Contact information
                 </h2>
-                {/* <p className="text-gray-600 dark:text-gray-400 text-lg mb-6">
-                  Ready to transform your space? Contact us today to schedule a consultation with our design experts.
-                  We're excited to bring your vision to life.
-                </p> */}
               </div>
 
               <div className="space-y-6">
@@ -96,14 +90,14 @@ const BimContactSection = () => {
                     viewport={{ once: true }}
                     className="flex items-start"
                   >
-                    <div className="p-3 rounded-full bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 mr-4">
+                    <div className="p-3 rounded-full bg-amber-50 text-amber-600 mr-4">
                       {item.icon}
                     </div>
                     <div>
-                      <h3 className="font-medium text-gray-900 dark:text-white mb-1">{item.title}</h3>
+                      <h3 className="font-medium text-gray-900 mb-1">{item.title}</h3>
                       <a
                         href={item.link}
-                        className="text-gray-600 dark:text-gray-400 hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
+                        className="text-gray-600 hover:text-amber-600 transition-colors"
                       >
                         {item.content}
                       </a>
@@ -113,12 +107,12 @@ const BimContactSection = () => {
               </div>
 
               {/* Studio hours */}
-              <div className="mt-12 bg-amber-50 dark:bg-amber-900/10 rounded-xl p-6">
-                <h3 className="text-lg font-medium mb-4 flex items-center dark:text-white">
-                  <Clock className="w-5 h-5 mr-2 text-amber-600 dark:text-amber-400" />
+              <div className="mt-12 bg-amber-50 rounded-xl p-6">
+                <h3 className="text-lg font-medium mb-4 flex items-center text-gray-900">
+                  <Clock className="w-5 h-5 mr-2 text-amber-600" />
                   Studio Hours
                 </h3>
-                <ul className="space-y-2 text-gray-600 dark:text-gray-400">
+                <ul className="space-y-2 text-gray-600">
                   <li className="flex justify-between">
                     <span>Monday - Saturday</span>
                     <span>9:00 AM - 8:30 PM</span>
@@ -137,11 +131,11 @@ const BimContactSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 border border-gray-100 dark:border-gray-700"
+              className="bg-white rounded-xl shadow-xl p-8 border border-gray-100"
             >
               {formStatus.submitted && (
                 <div
-                  className={`mb-6 p-4 rounded-lg ${formStatus.success ? "bg-green-50 text-green-800 dark:bg-green-900/20 dark:text-green-400" : "bg-red-50 text-red-800 dark:bg-red-900/20 dark:text-red-400"}`}
+                  className={`mb-6 p-4 rounded-lg ${formStatus.success ? "bg-green-50 text-green-800" : "bg-red-50 text-red-800"}`}
                 >
                   <div className="flex items-center">
                     {formStatus.success ? (
@@ -157,7 +151,7 @@ const BimContactSection = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                       Full Name
                     </label>
                     <input
@@ -167,12 +161,12 @@ const BimContactSection = () => {
                       value={formState.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-amber-400"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
                       placeholder="John Doe"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                       Email Address
                     </label>
                     <input
@@ -182,7 +176,7 @@ const BimContactSection = () => {
                       value={formState.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-amber-400"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -190,7 +184,7 @@ const BimContactSection = () => {
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
                       Phone Number
                     </label>
                     <input
@@ -199,14 +193,14 @@ const BimContactSection = () => {
                       name="phone"
                       value={formState.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-amber-400"
-                      placeholder="+1 (555) 987-6543"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                      placeholder="+123456789"
                     />
                   </div>
                   <div>
                     <label
                       htmlFor="projectType"
-                      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                      className="block text-sm font-medium text-gray-700 mb-1"
                     >
                       Project Type
                     </label>
@@ -216,7 +210,7 @@ const BimContactSection = () => {
                       value={formState.projectType}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-amber-400"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
                     >
                       <option value="">Select Project Type</option>
                       <option value="residential-interior">Residential Interior</option>
@@ -230,7 +224,7 @@ const BimContactSection = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                     Project Details
                   </label>
                   <textarea
@@ -240,7 +234,7 @@ const BimContactSection = () => {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-amber-400"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
                     placeholder="Tell us about your project, goals, timeline, and budget..."
                   ></textarea>
                 </div>
@@ -255,9 +249,9 @@ const BimContactSection = () => {
               </form>
 
               <div className="mt-6 text-center">
-                <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center justify-center">
+                <p className="text-sm text-gray-500 flex items-center justify-center">
                   <MessageSquare className="w-4 h-4 mr-1" />
-                  Prefer a quick chat? Call us at +1 (555) 987-6543
+                  Prefer a quick chat? Call us at +1234567890
                 </p>
               </div>
             </motion.div>
@@ -269,4 +263,3 @@ const BimContactSection = () => {
 }
 
 export default BimContactSection
-

@@ -7,6 +7,8 @@ import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react"
 const BimFeedbackSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [autoplay, setAutoplay] = useState(true)
+  const [isModalOpen, setIsModalOpen] = useState(false) // State for modal visibility
+  const [selectedProjectImages, setSelectedProjectImages] = useState([]) // State for selected project images
 
   const testimonials = [
     {
@@ -39,6 +41,36 @@ const BimFeedbackSection = () => {
     },
   ]
 
+  const projects = [
+    { 
+      title: "Modern Minimalist Home", 
+      category: "Residential Interior", 
+      images: [
+        "/IMAGES/Residential 1.jpg",
+        "/IMAGES/Corporate 4.jpg",
+        "/IMAGES/Residential 3.jpg"
+      ]
+    },
+    { 
+      title: "Luxury Restaurant", 
+      category: "Commercial Interior", 
+      images: [
+        "/IMAGES/Restarant 2.jpg",
+        "/IMAGES/Restarant 3.jpg",
+        "/IMAGES/Restraunt 4.jpg"
+      ]
+    },
+    { 
+      title: "Corporate Headquarters", 
+      category: "Commercial Exterior", 
+      images: [
+        "/IMAGES/Corporate 6.jpg",
+        "/IMAGES/Corporate 5.jpg",
+        "/IMAGES/Corporate 10.jpg"
+      ]
+    },
+  ]
+
   useEffect(() => {
     let interval
     if (autoplay) {
@@ -57,6 +89,16 @@ const BimFeedbackSection = () => {
   const handleNext = () => {
     setAutoplay(false)
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length)
+  }
+
+  const openModal = (images) => {
+    setSelectedProjectImages(images) // Show all images
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+    setSelectedProjectImages([])
   }
 
   return (
@@ -170,62 +212,63 @@ const BimFeedbackSection = () => {
             <p className="text-gray-600">Take a look at some of our recent design work</p>
           </div>
 
-          <div className="mt-20">
-  <div className="text-center mb-12">
-    <h3 className="text-2xl font-bold mb-2 dark:text-black"></h3>
-    <p className="text-gray-600"></p>
-  </div>
-
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-    {[
-      { 
-        title: "Modern Minimalist Home", 
-        category: "Residential Interior", 
-        image: "/IMAGES/alex-kotliarskyi-QBpZGqEMsKg-unsplash.jpg" 
-      },
-      { 
-        title: "Luxury Restaurant", 
-        category: "Commercial Interior", 
-        image: "/IMAGES/getty-images-GWy4HmlGraI-unsplash.jpg" 
-      },
-      { 
-        title: "Corporate Headquarters", 
-        category: "Commercial Exterior", 
-        image: "/IMAGES/getty-images-OYBtn34RPzY-unsplash.jpg" 
-      },
-    ].map((project, index) => (
-      <motion.div
-        key={index}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
-        viewport={{ once: true }}
-        className="group relative overflow-hidden rounded-xl"
-      >
-        <img
-          src={project.image} // Use the image from the project object
-          alt={project.title}
-          className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
-          <h4 className="text-xl font-bold text-white mb-1">{project.title}</h4>
-          <p className="text-amber-300">{project.category}</p>
-        </div>
-      </motion.div>
-    ))}
-  </div>
-</div>
-
-
-          <div className="text-center mt-10">
-            <a
-              href="/portfolio"
-              className="inline-flex items-center justify-center px-6 py-3 bg-amber-600 text-white font-medium rounded-full hover:bg-amber-700 transition-colors duration-200"
-            >
-              View All Projects
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </a>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {projects.map((project, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="group relative overflow-hidden rounded-xl"
+                onClick={() => openModal(project.images)} // Open modal with all images
+              >
+                <img
+                  src={project.images[0]} // Display the first image as the thumbnail
+                  alt={project.title}
+                  className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
+                  <h4 className="text-xl font-bold text-white mb-1">{project.title}</h4>
+                  <p className="text-amber-300">{project.category}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
+        </div>
+
+        {/* Modal for displaying multiple images */}
+        {isModalOpen && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75">
+            <div className="relative p-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {selectedProjectImages.map((image, index) => (
+                  <img 
+                    key={index} 
+                    src={image} 
+                    alt={`Project Image ${index + 1}`} 
+                    className="border-4 border-white rounded-lg w-auto h-auto max-w-full max-h-[80vh] object-contain" 
+                  />
+                ))}
+              </div>
+              <button 
+                onClick={closeModal} 
+                className="mt-4 px-4 py-2 bg-orange-500 text-white font-medium rounded-full hover:bg-orange-600 transition-colors duration-200"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        )}
+
+        <div className="text-center mt-10">
+          <a
+            href="/portfolio"
+            className="inline-flex items-center justify-center px-6 py-3 bg-amber-600 text-white font-medium rounded-full hover:bg-amber-700 transition-colors duration-200"
+          >
+            View All Projects
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </a>
         </div>
       </div>
     </section>

@@ -45,7 +45,7 @@ const BimHeroSection = () => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f936eccf-80f9-4886-8476-ba89a630b7b6.png"
+          src="/IMAGES/Revit_Architecture.jpg"
           alt="Revit Architecture Background, modern building with glass and steel structure"
           className="w-full h-full object-cover object-center"
           onError={(e) => (e.target.style.display = "none")}
