@@ -46,17 +46,16 @@ const BimContactSection = () => {
   }
 
   return (
-    <section className="py-20 bg-white">
+    <section id="contact" className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
             {/* Contact information */}
             <div>
               <div className="mb-12">
-                <div className="inline-block px-3 py-1 text-sm font-medium text-amber-600 bg-amber-100 rounded-full mb-4">
+                <div className="inline-block px-3 py-1 text-sm font-medium text-yellow-800 bg-yellow-100 rounded-full mb-4">
                   Get In Touch
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
                   Contact information
                 </h2>
               </div>
@@ -78,7 +77,7 @@ const BimContactSection = () => {
                   {
                     icon: <MapPin className="w-5 h-5" />,
                     title: "Visit Our Company",
-                    content: "No. 2943/E,3rd Floor, 40, Service Rd, opposite Shri Maruthi Mandira, Hosahalli Extension, Vijayanagar, Bengaluru, Karnataka 560040",
+                    content: "#89, 18th main, 15th Cross, Near Post office, MRCR Layout, Vijayanagar, Bangalore",
                     link: "https://maps.google.com",
                   },
                 ].map((item, index) => (
@@ -90,14 +89,14 @@ const BimContactSection = () => {
                     viewport={{ once: true }}
                     className="flex items-start"
                   >
-                    <div className="p-3 rounded-full bg-amber-50 text-amber-600 mr-4">
+                    <div className="p-3 rounded-full bg-yellow-50 text-yellow-600 mr-4">
                       {item.icon}
                     </div>
                     <div>
-                      <h3 className="font-medium text-gray-900 mb-1">{item.title}</h3>
+                      <h3 className="font-semibold text-gray-800 mb-1">{item.title}</h3>
                       <a
                         href={item.link}
-                        className="text-gray-600 hover:text-amber-600 transition-colors"
+                        className="text-gray-500 hover:text-gray-800 transition-colors"
                       >
                         {item.content}
                       </a>
@@ -107,12 +106,12 @@ const BimContactSection = () => {
               </div>
 
               {/* Studio hours */}
-              <div className="mt-12 bg-amber-50 rounded-xl p-6">
-                <h3 className="text-lg font-medium mb-4 flex items-center text-gray-900">
-                  <Clock className="w-5 h-5 mr-2 text-amber-600" />
+              <div className="mt-12 bg-yellow-50 rounded-xl p-6">
+                <h3 className="text-lg font-semibold mb-4 flex items-center text-gray-800">
+                  <Clock className="w-5 h-5 mr-2 text-yellow-600" />
                   Studio Hours
                 </h3>
-                <ul className="space-y-2 text-gray-600">
+                <ul className="space-y-2 text-gray-500">
                   <li className="flex justify-between">
                     <span>Monday - Saturday</span>
                     <span>9:00 AM - 8:30 PM</span>
@@ -125,138 +124,25 @@ const BimContactSection = () => {
               </div>
             </div>
 
-            {/* Contact form */}
+            {/* Google Map */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="bg-white rounded-xl shadow-xl p-8 border border-gray-100"
+              className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100"
             >
-              {formStatus.submitted && (
-                <div
-                  className={`mb-6 p-4 rounded-lg ${formStatus.success ? "bg-green-50 text-green-800" : "bg-red-50 text-red-800"}`}
-                >
-                  <div className="flex items-center">
-                    {formStatus.success ? (
-                      <CheckCircle className="w-5 h-5 mr-2" />
-                    ) : (
-                      <AlertCircle className="w-5 h-5 mr-2" />
-                    )}
-                    <p>{formStatus.message}</p>
-                  </div>
-                </div>
-              )}
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formState.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                      placeholder="John Doe"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formState.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formState.phone}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                      placeholder="+123456789"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="projectType"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      Project Type
-                    </label>
-                    <select
-                      id="projectType"
-                      name="projectType"
-                      value={formState.projectType}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                    >
-                      <option value="">Select Project Type</option>
-                      <option value="residential-interior">Residential Interior</option>
-                      <option value="commercial-interior">Commercial Interior</option>
-                      <option value="exterior-design">Exterior Design</option>
-                      <option value="bim-modeling">BIM Modeling</option>
-                      <option value="3d-visualization">3D Visualization</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                    Project Details
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formState.message}
-                    onChange={handleChange}
-                    required
-                    rows={5}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                    placeholder="Tell us about your project, goals, timeline, and budget..."
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full flex items-center justify-center px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-lg transition-colors duration-200"
-                >
-                  Send Message
-                  <Send className="ml-2 w-4 h-4" />
-                </button>
-              </form>
-
-              <div className="mt-6 text-center">
-                <p className="text-sm text-gray-500 flex items-center justify-center">
-                  <MessageSquare className="w-4 h-4 mr-1" />
-                  Prefer a quick chat? Call us at +1234567890
-                </p>
-              </div>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15552.06664131103!2d77.5268758285241!3d12.97083321528681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baf990d4f7135a5%3A0x8545741652a9316!2sVijayanagar%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1678886369186!5m2!1sen!2sin"
+                width="100%"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </motion.div>
           </div>
-        </div>
       </div>
     </section>
   )

@@ -2,22 +2,25 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import giphy from "../../assets/IMAGES/giphy.gif";
+
+import { Eye, Target } from "lucide-react";
 
 const slides = [
   {
-    title: "Innovative Interior & Exterior Design Solutions",
+    title: "Pioneering the Future with Advanced BIM Solutions",
     description:
-      "Transform your spaces with our cutting-edge design solutions that blend aesthetics with functionality.",
+      "Leverage our expertise in Building Information Modeling to enhance project efficiency, collaboration, and outcomes from concept to completion.",
   },
   {
-    title: "Expert BIM Modeling & Visualization",
+    title: "Precision BIM for Flawless Execution",
     description:
-      "Experience your design before construction with our detailed 3D models and immersive visualizations.",
+      "Our detailed 3D models and data-rich visualizations empower you to make informed decisions, minimizing risks and costly rework.",
   },
   {
-    title: "Sustainable Architecture & Design",
+    title: "Integrated BIM for Sustainable & Smart Buildings",
     description:
-      "Create eco-friendly spaces that reduce environmental impact while maximizing comfort and efficiency.",
+      "We integrate BIM with sustainable design principles to deliver high-performance buildings that are both eco-friendly and future-proof.",
   },
 ];
 
@@ -43,20 +46,19 @@ const BimHeroSection = () => {
   return (
     <section className="relative h-screen overflow-hidden bg-gray-50">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <img
-          src="/IMAGES/Revit_Architecture.jpg"
-          alt="Revit Architecture Background, modern building with glass and steel structure"
+          src={giphy}
+          alt="BIM construction process GIF"
           className="w-full h-full object-cover object-center"
-          onError={(e) => (e.target.style.display = "none")}
         />
         <div className="absolute inset-0 bg-black/50" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 h-full flex items-center">
-        <div className="w-full pl-8 sm:pl-12 lg:pl-16 xl:pl-20 2xl:pl-24 pr-4">
-          <div className="max-w-4xl">
+      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center">
+        <div className="w-full px-4">
+          <div className="max-w-4xl mx-auto bg-black/20 backdrop-blur-sm border border-white/10 rounded-lg p-8 shadow-lg">
             <motion.h1
               key={slides[currentIndex].title}
               initial={{ opacity: 0, y: 20 }}
@@ -78,25 +80,7 @@ const BimHeroSection = () => {
             <div className="inline-block px-4 py-1 bg-amber-100 border border-amber-500/30 rounded-full text-amber-600 text-sm font-medium mb-6">
               BIM Construct - Excellence in Design
             </div>
-            <div className="flex flex-wrap gap-4">
-              <Link
-                to="/contact"
-                className="relative overflow-hidden inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-amber-600 to-orange-600 px-8 py-3 text-base font-medium text-white transition-all duration-500 hover:shadow-amber-500/25 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 shadow-lg shadow-amber-700/30 group"
-              >
-                <span className="absolute -z-10 inset-0 rounded-full bg-gradient-to-r from-amber-600 to-orange-600 blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-500"></span>
-                <span className="relative z-10 flex items-center">
-                  Get Started
-                  <ArrowRight className="ml-2 h-5 w-5 transform transition-transform duration-300 group-hover:translate-x-1" />
-                </span>
-              </Link>
-              {/* <Link
-                to="/about"
-                className="inline-flex h-12 items-center justify-center rounded-full border-2 border-white/20 bg-white/10 px-8 py-3 text-base font-medium text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20 hover:shadow-lg hover:shadow-white/10 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2"
-              >
-                Learn More
-              </Link> */}
-            </div>
-          </div>
+                      </div>
         </div>
       </div>
 
@@ -156,7 +140,7 @@ const ServiceSection = () => {
   };
 
   return (
-    <section className="py-16 bg-gray-100">
+    <section id="services" className="py-16 bg-gray-100">
       <div className="container mx-auto px-4 max-w-7xl">
         <h2 className="text-4xl font-extrabold text-center mb-12 text-gray-900">
           Our Services
@@ -225,11 +209,113 @@ const ServiceSection = () => {
   );
 };
 
+const AboutSection = () => {
+  return (
+    <section id="about" className="py-24 bg-gradient-to-b from-gray-50 to-white">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <motion.span
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            className="inline-block px-4 py-1 text-sm font-medium text-white bg-blue-600 rounded-full mb-4 shadow-md"
+          >
+            About Us
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ delay: 0.2 }}
+            className="text-4xl md:text-5xl font-bold text-gray-900"
+          >
+            Building Tomorrow, <span className="text-blue-600">Today</span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ delay: 0.4 }}
+            className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto"
+          >
+            At BIM Construct, we merge architectural brilliance with cutting-edge
+            BIM solutions. Our approach transforms ideas into reality, ensuring
+            efficiency, transparency, and future-ready infrastructure.
+          </motion.p>
+        </div>
+
+        {/* Main Layout */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Side - Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8 }}
+            className="relative group"
+          >
+            <img
+              src="/IMAGES/Corporate 11.jpg"
+              alt="Modern office with BIM designs"
+              className="rounded-2xl shadow-2xl w-full h-[420px] object-cover transform group-hover:scale-105 transition duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-2xl"></div>
+          </motion.div>
+
+          {/* Right Side - Vision & Mission Cards */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-8"
+          >
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="p-6 bg-white rounded-xl shadow-lg border-l-4 border-blue-600"
+            >
+              <div className="flex items-center mb-3">
+                <Eye className="w-6 h-6 text-blue-600 mr-3" />
+                <h3 className="text-2xl font-semibold text-gray-900">
+                  Our Vision
+                </h3>
+              </div>
+              <p className="text-gray-600">
+                To redefine construction by becoming a global leader in BIM-driven
+                innovation — creating smarter, faster, and more sustainable
+                projects.
+              </p>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="p-6 bg-white rounded-xl shadow-lg border-l-4 border-green-600"
+            >
+              <div className="flex items-center mb-3">
+                <Target className="w-6 h-6 text-green-600 mr-3" />
+                <h3 className="text-2xl font-semibold text-gray-900">
+                  Our Mission
+                </h3>
+              </div>
+              <p className="text-gray-600">
+                To deliver BIM technologies that enhance collaboration, reduce
+                costs, and maximize efficiency, while ensuring transparency and
+                long-term value for our partners.
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const App = () => {
   return (
     <div className="min-h-screen bg-white">
       <BimHeroSection />
       <ServiceSection />
+      <AboutSection />
     </div>
   );
 };

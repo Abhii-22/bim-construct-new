@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react"
 import { Link, NavLink, useLocation } from "react-router-dom"
+import { HashLink } from 'react-router-hash-link';
 import { ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { motion } from "framer-motion"
-import logo from "@/assets/Logos/Medini_logo.png"
 import bimLogo from "@/assets/NAVBAR/BIM Construct.png"
 import eduphygitalLogo from "@/assets/NAVBAR/Eduphygital White.png"
 import buildspaceLogo from "@/assets/NAVBAR/Builddspace Whte.png"
@@ -147,7 +147,7 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 flex flex-col ">
       {/* Navbar */}
       <motion.nav
-        className="bg-customBlue text-white"
+        className="bg-black text-white"
         initial={{ y: 0 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.3 }}
@@ -156,9 +156,9 @@ const Header = () => {
           {/* Logo */}
           <NavLink to="/" className="flex items-center">
             <img
-              src={logo}
-              alt="Medini"
-              className="h-14 mr-2"
+              src={bimLogo}
+              alt="BIM Construct"
+              className="h-8 w-30 mr-2"
             />
             
             {isCourse && (
@@ -219,38 +219,37 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">
-            <div className="flex items-center gap-4">
-              <div className="hidden md:flex items-center gap-4">
-               
-                <a
-                  href="#"
-                  className="relative overflow-hidden inline-flex h-10 items-center justify-center rounded-full bg-amber-100 px-6 py-2 text-sm font-medium text-amber-600 shadow-lg transition-all duration-500 hover:shadow-amber-500/25 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 dark:shadow-lg dark:shadow-blue-700/30 group"
-                  onClick={handleClick}
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
+            <HashLink smooth to="/#" className="px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-700 transition-colors duration-200">Home</HashLink>
+            <HashLink smooth to="/#services" className="px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-700 transition-colors duration-200">Services</HashLink>
+            <HashLink smooth to="/#about" className="px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-700 transition-colors duration-200">About</HashLink>
+            <HashLink smooth to="/#contact" className="px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-700 transition-colors duration-200">Contact</HashLink>
+            <a
+              href="#"
+              className="relative overflow-hidden inline-flex h-10 items-center justify-center rounded-full bg-amber-100 px-6 py-2 text-sm font-medium text-amber-600 shadow-lg transition-all duration-500 hover:shadow-amber-500/25 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 dark:shadow-lg dark:shadow-blue-700/30 group"
+              onClick={handleClick}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              <span className="absolute -z-10 inset-0 rounded-full bg-amber-100 blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-500"></span>
+              <span className="relative z-10 flex items-center">
+                Get Started
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className={`ml-2 h-4 w-4 transform transition-transform duration-300 ${isHovered ? 'translate-x-1' : ''}`}
                 >
-                  <span className="absolute -z-10 inset-0 rounded-full bg-amber-100 blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-500"></span>
-                  <span className="relative z-10 flex items-center">
-                    Get Started
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className={`ml-2 h-4 w-4 transform transition-transform duration-300 ${isHovered ? 'translate-x-1' : ''}`}
-                    >
-                      <path d="M5 12h14" />
-                      <path d="m12 5 7 7-7 7" />
-                    </svg>
-                  </span>
-                </a>
-              </div>
-            </div>
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </span>
+            </a>
           </div>
 
           {/* Mobile Navigation */}
@@ -311,6 +310,7 @@ const Header = () => {
           </Sheet>
         </div>
       </motion.nav>
+
 
       {/* Spacer to push content below the header */}
       <div className={`h-${showLinks ? "28" : "16"} transition-all duration-300`}></div>

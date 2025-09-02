@@ -1,4 +1,5 @@
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom";
+import { HashLink } from 'react-router-hash-link';
 import logo from "@/assets/Logos/Medini_logo.png"
 
 function Footer() {
@@ -47,35 +48,26 @@ function Footer() {
             </h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/bim-consulting" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  BIM Consulting
-                </Link>
+                <HashLink smooth to="/#services" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
+                Architectural Design
+                </HashLink>
               </li>
               <li>
-                <Link to="/bim-modeling" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  BIM Modeling
-                </Link>
+                <HashLink smooth to="/#services" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
+                Interior Design
+                </HashLink>
               </li>
               <li>
-                <Link to="/bim-coordination" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  BIM Coordination
-                </Link>
+                <HashLink smooth to="/#services" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
+                3D Modeling
+                </HashLink>
               </li>
               <li>
-                <Link to="/4d-5d-bim" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  4D/5D BIM Services
-                </Link>
+                <HashLink smooth to="/#services" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
+                Site Planning
+                </HashLink>
               </li>
-              <li>
-                <Link to="/bim-implementation" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  BIM Implementation
-                </Link>
-              </li>
-              <li>
-                <Link to="/bim-training" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
-                  BIM Training
-                </Link>
-              </li>
+             
             </ul>
           </div>
 
@@ -84,18 +76,18 @@ function Footer() {
             <h3 className="text-xl font-semibold text-gray-800 dark:text-white">Quick Links</h3>
             <nav className="grid grid-cols-2 gap-4">
               {[
-                { label: 'About Us', path: '/about' },
-                { label: 'Services', path: '/' },
-                { label: 'Blog', path: '/blog' },
-                { label: 'Contact', path: '/contact' },
+                { label: 'About Us', path: '/#about' },
+                { label: 'Services', path: '/#services' },
+                { label: 'Contact', path: '/#contact' },
               ].map(({ label, path }) => (
-                <Link
+                <HashLink
+                  smooth
                   key={label}
                   to={path}
                   className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm"
                 >
                   {label}
-                </Link>
+                </HashLink>
               ))}
             </nav>
           </div>
