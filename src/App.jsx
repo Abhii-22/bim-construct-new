@@ -4,6 +4,7 @@ import "./index.css"
 import BIMHome from "./pages/BIM/Home"
 import BIMAbout from "./pages/BIM/About"
 import BIMContact from "./pages/BIM/Contact"
+import BIMServices from "./pages/BIM/Services"
 import Header from "./components/Header3"
 import Footer from "./components/Footer"
 import ScrollToTop from "./components/ScrollToTop"
@@ -20,29 +21,7 @@ function App() {
             <Route path="/" element={<BIMHome />} />
             <Route path="/about" element={<BIMAbout />} />
             <Route path="/contact" element={<BIMContact />} />
-            <Route path="/services" element={
-              <div className="min-h-screen flex items-center justify-center">
-                <div className="text-center p-8 bg-white rounded-xl shadow-lg max-w-2xl mx-4">
-                  <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Services</h2>
-                  <p className="text-gray-600 mb-6">We offer a comprehensive range of BIM services to support your construction projects from concept to completion.</p>
-                  <div className="grid md:grid-cols-2 gap-6 mt-8">
-                    {[
-                      { title: 'BIM Modeling', icon: '📐' },
-                      { title: '3D Visualization', icon: '🖥️' },
-                      { title: 'Clash Detection', icon: '🔍' },
-                      { title: '4D/5D BIM', icon: '📊' },
-                      { title: 'BIM Coordination', icon: '🤝' },
-                      { title: 'Facility Management', icon: '🏢' }
-                    ].map((service, index) => (
-                      <div key={index} className="bg-gray-50 p-6 rounded-lg hover:shadow-md transition-shadow">
-                        <div className="text-3xl mb-3">{service.icon}</div>
-                        <h3 className="text-xl font-semibold text-gray-900">{service.title}</h3>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            } />
+            <Route path="/services" element={<BIMServices />} />
             <Route
               path="*"
               element={

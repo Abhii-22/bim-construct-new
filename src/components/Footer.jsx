@@ -38,34 +38,34 @@ function Footer() {
       ];
 
   return (
-    <footer className="bg-white px-8 dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
+    <footer className="bg-white px-8 border-t border-gray-100">
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Services List Section */}
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
+            <h3 className="text-xl font-semibold text-gray-800">
               {isTechVritti ? "TechVritti Services" : "Our Services"}
             </h3>
             <ul className="space-y-3">
               <li>
-                <HashLink smooth to="/#services" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
+                <Link to="/services" className="text-gray-600 hover:text-orange-600 transition-colors duration-300 text-sm">
                 Architectural Design
-                </HashLink>
+                </Link>
               </li>
               <li>
-                <HashLink smooth to="/#services" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
+                <Link to="/services" className="text-gray-600 hover:text-orange-600 transition-colors duration-300 text-sm">
                 Interior Design
-                </HashLink>
+                </Link>
               </li>
               <li>
-                <HashLink smooth to="/#services" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
+                <Link to="/services" className="text-gray-600 hover:text-orange-600 transition-colors duration-300 text-sm">
                 3D Modeling
-                </HashLink>
+                </Link>
               </li>
               <li>
-                <HashLink smooth to="/#services" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm">
+                <Link to="/services" className="text-gray-600 hover:text-orange-600 transition-colors duration-300 text-sm">
                 Site Planning
-                </HashLink>
+                </Link>
               </li>
              
             </ul>
@@ -73,36 +73,35 @@ function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-gray-800 dark:text-white">Quick Links</h3>
+            <h3 className="text-xl font-semibold text-gray-800">Quick Links</h3>
             <nav className="grid grid-cols-2 gap-4">
               {[
-                { label: 'About Us', path: '/#about' },
-                { label: 'Services', path: '/#services' },
-                { label: 'Contact', path: '/#contact' },
+                { label: 'About Us', path: '/about' },
+                { label: 'Services', path: '/services' },
+                { label: 'Contact', path: '/contact' },
               ].map(({ label, path }) => (
-                <HashLink
-                  smooth
+                <Link
                   key={label}
                   to={path}
-                  className="text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 text-sm"
+                  className="text-gray-600 hover:text-orange-600 transition-colors duration-300 text-sm"
                 >
                   {label}
-                </HashLink>
+                </Link>
               ))}
             </nav>
           </div>
 
           {/* Newsletter and Social Media */}
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-gray-800 dark:text-white">Stay Connected</h3>
-            <p className="text-gray-600 dark:text-gray-400 text-sm">
+            <h3 className="text-xl font-semibold text-gray-800">Stay Connected</h3>
+            <p className="text-gray-600 text-sm">
               Subscribe to our newsletter for the latest updates and insights.
             </p>
             <div className="flex">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full px-4 py-2 text-sm border border-gray-300 dark:border-gray-700 rounded-l-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white"
+                className="w-full px-4 py-2 text-sm border border-gray-300 rounded-l-md focus:ring-2 focus:ring-blue-500"
               />
               <button className="bg-customBlue text-white px-4 py-2 text-sm rounded-r-md hover:bg-blue-700 transition-colors duration-300">
                 Subscribe
@@ -111,7 +110,7 @@ function Footer() {
             
             {/* Social Media Icons */}
             <div className="mt-4">
-              <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Follow Us</h4>
+              <h4 className="text-sm font-medium text-gray-700 mb-3">Follow Us</h4>
               <div className="flex space-x-4">
                 {socialLinks.map(({ platform, url }, index) => (
                   <a
@@ -119,7 +118,7 @@ function Footer() {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-blue-100 hover:text-customBlue dark:hover:bg-blue-900/30 dark:hover:text-blue-400 transition-colors"
+                    className="p-3 rounded-full bg-gray-100 text-gray-600 hover:bg-blue-100 hover:text-customBlue transition-colors"
                     aria-label={platform}
                   >
                     <SocialIcon platform={platform} />
@@ -131,8 +130,8 @@ function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-12 pt-6 border-t border-gray-200 dark:border-gray-800 text-center">
-          <p className="text-sm text-gray-600 dark:text-gray-400">
+        <div className="mt-12 pt-6 border-t border-gray-200 text-center">
+          <p className="text-sm text-gray-600">
             © {new Date().getFullYear()} {isTechVritti ? "TechVritti" : "Medini Technologies"}. All Rights Reserved.
           </p>
         </div>

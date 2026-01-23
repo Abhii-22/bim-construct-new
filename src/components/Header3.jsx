@@ -144,177 +144,163 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex flex-col ">
-      {/* Navbar */}
-      <motion.nav
-        className="bg-black text-white"
-        initial={{ y: 0 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.3 }}
-      >
-        <div className="container mx-auto flex items-center justify-between p-4 px-4">
-          {/* Logo */}
-          <NavLink to="/" className="flex items-center">
+    <div className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-4 px-4 text-white transition-all duration-300 ${isScrolled ? 'bg-black/50 backdrop-blur-sm' : 'bg-transparent'}`}>
+      {/* Logo */}
+      <NavLink to="/" className="flex items-center">
+        <img
+          src={bimLogo}
+          alt="BIM Construct"
+          className="h-8 w-30 mr-2"
+        />
+        
+        {isCourse && (
+          <>
+            <div className="h-8 w-px bg-white mx-2"></div>
+            <img
+              src={getCourseProviderLogo()}
+              alt="Course Provider"
+              className="h-8 ml-1"
+            />
+          </>
+        )}
+
+        {isBimConstruct && (
+          <>
+            <div className="h-8 w-px bg-white mx-2"></div>
             <img
               src={bimLogo}
               alt="BIM Construct"
-              className="h-8 w-30 mr-2"
+              className="h-6 ml-1"
             />
-            
-            {isCourse && (
-              <>
-                <div className="h-8 w-px bg-white mx-2"></div>
-                <img
-                  src={getCourseProviderLogo()}
-                  alt="Course Provider"
-                  className="h-8 ml-1"
-                />
-              </>
-            )}
+          </>
+        )}
+        {isEduphygital && (
+          <>
+            <div className="h-8 w-px bg-white mx-2"></div>
+            <img
+              src={eduphygitalLogo}
+              alt="Eduphygital"
+              className="h-8 ml-1"
+            />
+          </>
+        )}
+        {isBuildspace && (
+          <>
+            <div className="h-8 w-px bg-white mx-2"></div>
+            <img
+              src={buildspaceLogo}
+              alt="Buildspace"
+              className="h-8 ml-1"
+            />
+          </>
+        )}
+        {isDigiDhvani && (
+          <>
+            <div className="h-8 w-px bg-white mx-2"></div>
+            <img
+              src={digidhvaniLogo}
+              alt="DigiDhvani"
+              className="h-8 ml-1"
+            />
+          </>
+        )}
+        {isTechVritti && (
+          <p className="font-playfair">TechVritti</p>
+        )}
+      </NavLink>
 
-            {isBimConstruct && (
-              <>
-                <div className="h-8 w-px bg-white mx-2"></div>
-                <img
-                  src={bimLogo}
-                  alt="BIM Construct"
-                  className="h-6 ml-1"
-                />
-              </>
-            )}
-            {isEduphygital && (
-              <>
-                <div className="h-8 w-px bg-white mx-2"></div>
-                <img
-                  src={eduphygitalLogo}
-                  alt="Eduphygital"
-                  className="h-8 ml-1"
-                />
-              </>
-            )}
-            {isBuildspace && (
-              <>
-                <div className="h-8 w-px bg-white mx-2"></div>
-                <img
-                  src={buildspaceLogo}
-                  alt="Buildspace"
-                  className="h-8 ml-1"
-                />
-              </>
-            )}
-            {isDigiDhvani && (
-              <>
-                <div className="h-8 w-px bg-white mx-2"></div>
-                <img
-                  src={digidhvaniLogo}
-                  alt="DigiDhvani"
-                  className="h-8 ml-1"
-                />
-              </>
-            )}
-            {isTechVritti && (
-              <p className="font-playfair">TechVritti</p>
-            )}
-          </NavLink>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-4">
-            <HashLink smooth to="/#" className="px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-700 transition-colors duration-200">Home</HashLink>
-            <HashLink smooth to="/#services" className="px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-700 transition-colors duration-200">Services</HashLink>
-            <HashLink smooth to="/#about" className="px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-700 transition-colors duration-200">About</HashLink>
-            <HashLink smooth to="/#contact" className="px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-700 transition-colors duration-200">Contact</HashLink>
-            <a
-              href="#"
-              className="relative overflow-hidden inline-flex h-10 items-center justify-center rounded-full bg-amber-100 px-6 py-2 text-sm font-medium text-amber-600 shadow-lg transition-all duration-500 hover:shadow-amber-500/25 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 dark:shadow-lg dark:shadow-blue-700/30 group"
-              onClick={handleClick}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
+      {/* Desktop Navigation */}
+      <div className="hidden md:flex items-center space-x-4">
+        <HashLink smooth to="/#" className="text-white px-4 py-2 text-base font-medium rounded-md hover:bg-white/10 transition-colors duration-200">Home</HashLink>
+        <Link to="/about" className="text-white px-4 py-2 text-base font-medium rounded-md hover:bg-white/10 transition-colors duration-200">About</Link>
+        <Link to="/services" className="text-white px-4 py-2 text-base font-medium rounded-md hover:bg-white/10 transition-colors duration-200">Services</Link>
+        <Link to="/contact" className="text-white px-4 py-2 text-base font-medium rounded-md hover:bg-white/10 transition-colors duration-200">Contact</Link>
+        <a
+          href="#"
+          className="relative overflow-hidden inline-flex h-10 items-center justify-center rounded-full bg-amber-100 px-6 py-2 text-sm font-medium text-amber-600 shadow-lg transition-all duration-500 hover:shadow-amber-500/25 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 dark:shadow-lg dark:shadow-blue-700/30 group"
+          onClick={handleClick}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <span className="absolute -z-10 inset-0 rounded-full bg-amber-100 blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-500"></span>
+          <span className="relative z-10 flex items-center">
+            Get Started
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className={`ml-2 h-4 w-4 transform transition-transform duration-300 ${isHovered ? 'translate-x-1' : ''}`}
             >
-              <span className="absolute -z-10 inset-0 rounded-full bg-amber-100 blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-500"></span>
-              <span className="relative z-10 flex items-center">
-                Get Started
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className={`ml-2 h-4 w-4 transform transition-transform duration-300 ${isHovered ? 'translate-x-1' : ''}`}
-                >
-                  <path d="M5 12h14" />
-                  <path d="m12 5 7 7-7 7" />
-                </svg>
-              </span>
-            </a>
-          </div>
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </a>
+      </div>
 
-          {/* Mobile Navigation */}
-          <Sheet>
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon">
-                <div
-                  className={`absolute w-5 h-0.5 bg-current transition-all duration-500 ${isMobileMenuOpen ? "rotate-45" : "-translate-y-1.5"}`}
-                ></div>
-                <div
-                  className={`absolute w-5 h-0.5 bg-current transition-all duration-500 ${isMobileMenuOpen ? "opacity-0" : "opacity-100"}`}
-                ></div>
-                <div
-                  className={`absolute w-5 h-0.5 bg-current transition-all duration-500 ${isMobileMenuOpen ? "-rotate-45" : "translate-y-1.5"}`}
-                ></div>
+      {/* Mobile Navigation */}
+      <Sheet>
+        <SheetTrigger asChild className="md:hidden">
+          <Button variant="ghost" size="icon" className="text-black">
+            <div
+              className={`absolute w-5 h-0.5 bg-current transition-all duration-500 ${isMobileMenuOpen ? "rotate-45" : "-translate-y-1.5"}`}
+            ></div>
+            <div
+              className={`absolute w-5 h-0.5 bg-current transition-all duration-500 ${isMobileMenuOpen ? "opacity-0" : "opacity-100"}`}
+            ></div>
+            <div
+              className={`absolute w-5 h-0.5 bg-current transition-all duration-500 ${isMobileMenuOpen ? "-rotate-45" : "translate-y-1.5"}`}
+            ></div>
+          </Button>
+        </SheetTrigger>
+        <SheetContent side="left">
+          <SheetHeader>
+            <SheetTitle>Menu</SheetTitle>
+          </SheetHeader>
+          <div className="space-y-4 mt-4">
+            <ThemeToggle />
+            <Button variant="outline" className="w-full">
+              <SheetTrigger asChild className="md:hidden">
+                <HashLink smooth to="/#">Home</HashLink>
+              </SheetTrigger>
+            </Button>
+            <Button variant="outline" className="w-full">
+              <SheetTrigger asChild className="md:hidden">
+                <Link to="/about">About</Link>
+              </SheetTrigger>
+            </Button>
+            <Button variant="outline" className="w-full">
+              <SheetTrigger asChild className="md:hidden">
+                <Link to="/services">Services</Link>
+              </SheetTrigger>
+            </Button>
+            {isMediniSchool && (
+              <Button variant="outline" className="w-full flex items-center">
+                <SheetTrigger asChild className="md:hidden">
+                  <Link to="/courses">Courses</Link>
+                </SheetTrigger>
               </Button>
-            </SheetTrigger>
-            <SheetContent side="left">
-              <SheetHeader>
-                <SheetTitle>Menu</SheetTitle>
-              </SheetHeader>
-              <div className="space-y-4 mt-4">
-                <ThemeToggle />
-                <Button variant="outline" className="w-full">
-                  <SheetTrigger asChild className="md:hidden">
-                    <Link to="/">Home</Link>
-                  </SheetTrigger>
-                </Button>
-                {isMediniSchool && (
-                  <Button variant="outline" className="w-full flex items-center">
-                    <SheetTrigger asChild className="md:hidden">
-                      <Link to="/courses">Courses</Link>
-                    </SheetTrigger>
-                  </Button>
-                )}
-                <Button variant="outline" className="w-full flex items-center">
-                  <SheetTrigger asChild className="md:hidden">
-                    <Link to="/about">About</Link>
-                  </SheetTrigger>
-                </Button>
-                <Button variant="outline" className="w-full flex items-center">
-                  <SheetTrigger asChild className="md:hidden">
-                    <Link to="/blog">Blog</Link>
-                  </SheetTrigger>
-                </Button>
-                <Button variant="outline" className="w-full flex items-center">
-                  <SheetTrigger asChild className="md:hidden">
-                    <Link to="/awards">Awards</Link>
-                  </SheetTrigger>
-                </Button>
-                <Button variant="outline" className="w-full flex items-center">
-                  <SheetTrigger asChild className="md:hidden">
-                    <Link to="/contact">Contact</Link>
-                  </SheetTrigger>
-                </Button>
-              </div>
-            </SheetContent>
-          </Sheet>
-        </div>
-      </motion.nav>
-
-
-      {/* Spacer to push content below the header */}
-      <div className={`h-${showLinks ? "28" : "16"} transition-all duration-300`}></div>
-    </header>
+            )}
+            <Button variant="outline" className="w-full flex items-center">
+              <SheetTrigger asChild className="md:hidden">
+                <Link to="/about">About</Link>
+              </SheetTrigger>
+            </Button>
+                                    <Button variant="outline" className="w-full flex items-center">
+              <SheetTrigger asChild className="md:hidden">
+                <Link to="/contact">Contact</Link>
+              </SheetTrigger>
+            </Button>
+          </div>
+        </SheetContent>
+      </Sheet>
+    </div>
   )
 }
 

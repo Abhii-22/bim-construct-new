@@ -98,13 +98,13 @@ const BimFeedbackSection = () => {
   return (
     <section className="relative">
       {/* Heading */}
-      <div className="bg-gradient-to-b from-indigo-50 to-white py-20">
+      <div className="bg-gradient-to-br from-blue-50 via-white to-amber-50 py-20">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-block px-4 py-1 text-sm font-medium text-indigo-700 bg-indigo-200/50 backdrop-blur-md rounded-full mb-4"
+            className="inline-block px-4 py-1 text-sm font-medium text-blue-600 bg-blue-100 rounded-full mb-4"
           >
             Client Testimonials
           </motion.div>
@@ -133,11 +133,11 @@ const BimFeedbackSection = () => {
           onMouseEnter={() => setAutoplay(false)}
           onMouseLeave={() => setAutoplay(true)}
         >
-          <div className="absolute -top-12 -left-12 text-indigo-200 opacity-30">
+          <div className="absolute -top-12 -left-12 text-blue-200 opacity-30">
             <Quote size={100} />
           </div>
 
-          <div className="relative overflow-hidden rounded-3xl bg-white/95 backdrop-blur-md shadow-xl p-10 md:p-14">
+          <div className="relative overflow-hidden rounded-3xl bg-white/95 backdrop-blur-md shadow-xl p-10 md:p-14 border border-blue-100">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
@@ -150,7 +150,7 @@ const BimFeedbackSection = () => {
                 <p className="text-gray-700 text-lg mb-6 italic leading-relaxed max-w-2xl animate-fadeIn">
                   "{testimonials[currentIndex].text}"
                 </p>
-                <h4 className="font-semibold text-xl text-indigo-800">{testimonials[currentIndex].name}</h4>
+                <h4 className="font-semibold text-xl text-blue-800">{testimonials[currentIndex].name}</h4>
                 <div className="flex mt-2">
                   {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 text-amber-500 fill-amber-500 animate-pulse" />
@@ -162,13 +162,13 @@ const BimFeedbackSection = () => {
             {/* Controls */}
             <button
               onClick={handlePrev}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/90 backdrop-blur-md shadow-lg flex items-center justify-center text-indigo-700 hover:bg-indigo-50 transition"
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gradient-to-r from-orange-400 to-orange-500 text-white shadow-lg flex items-center justify-center hover:from-orange-500 hover:to-orange-600 transition-all duration-300 transform hover:scale-110"
             >
               <ChevronLeft size={22} />
             </button>
             <button
               onClick={handleNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/90 backdrop-blur-md shadow-lg flex items-center justify-center text-indigo-700 hover:bg-indigo-50 transition"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gradient-to-r from-orange-400 to-orange-500 text-white shadow-lg flex items-center justify-center hover:from-orange-500 hover:to-orange-600 transition-all duration-300 transform hover:scale-110"
             >
               <ChevronRight size={22} />
             </button>
@@ -185,8 +185,8 @@ const BimFeedbackSection = () => {
                 }}
                 className={`h-3 rounded-full transition-all duration-300 ${
                   currentIndex === index
-                    ? "bg-indigo-600 w-8 animate-pulse"
-                    : "bg-gray-300 w-3 hover:bg-indigo-400"
+                    ? "bg-gradient-to-r from-orange-400 to-orange-500 w-8 animate-pulse"
+                    : "bg-gray-300 w-3 hover:bg-orange-400"
                 }`}
                 whileHover={{ scale: 1.3 }}
               />
@@ -196,13 +196,13 @@ const BimFeedbackSection = () => {
       </div>
 
       {/* Stats Section */}
-      <div className="bg-gray-100 py-20">
+      <div className="bg-gradient-to-br from-gray-50 to-blue-50 py-20">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto text-center">
           {[
             { value: 150, label: "Projects Completed" },
-            { value: 40, label: "Happy Clients" },
-            { value: 12, label: "Design Awards" },
-            { value: 8, label: "Years Experience" },
+            { value: 80, label: "Happy Clients" },
+            { value: 15, label: "Design Awards" },
+            { value: 10, label: "Years Experience" },
           ].map((stat, index) => (
             <motion.div
               key={index}
@@ -216,7 +216,7 @@ const BimFeedbackSection = () => {
                 initial={{ textContent: 0 }}
                 whileInView={{ textContent: stat.value }}
                 transition={{ duration: 2, ease: "easeOut" }}
-                className="text-4xl md:text-5xl font-extrabold text-indigo-600 mb-2 animate-bounce"
+                className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-2 animate-bounce"
               >
                 {stat.value}+
               </motion.div>
@@ -227,7 +227,7 @@ const BimFeedbackSection = () => {
       </div>
 
       {/* Featured Projects */}
-      <div className="bg-white py-20">
+      <div className="bg-gradient-to-br from-amber-50 to-white py-20">
         <div className="text-center mb-14">
           <motion.h3
             initial={{ opacity: 0, y: 20 }}
@@ -252,19 +252,20 @@ const BimFeedbackSection = () => {
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
+              transition={{ duration: 0.8, delay: index * 0.2, ease: "easeOut" }}
               viewport={{ once: true }}
-              className="group relative overflow-hidden rounded-2xl shadow-xl cursor-pointer hover:shadow-2xl transition transform hover:-translate-y-2 hover:scale-105"
+              className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer transition-all duration-500 ease-out hover:shadow-2xl hover:-translate-y-3 border border-amber-100"
               onClick={() => openModal(project.images)}
+              whileHover={{ scale: 1.02, y: -5 }}
             >
               <img
                 src={project.images[0]}
                 alt={project.title}
                 className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 via-amber-900/60 to-transparent flex flex-col justify-end p-6">
                 <h4 className="text-xl font-bold text-white mb-1">{project.title}</h4>
-                <p className="text-amber-300">{project.category}</p>
+                <p className="text-amber-200">{project.category}</p>
               </div>
             </motion.div>
           ))}
@@ -278,30 +279,41 @@ const BimFeedbackSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
             className="fixed inset-0 flex items-center justify-center bg-black/80 z-50"
             onClick={closeModal}
           >
             <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
+              initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="relative p-6 max-w-6xl bg-white rounded-2xl"
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="relative p-6 max-w-6xl max-h-[90vh] bg-white rounded-2xl shadow-2xl overflow-hidden"
               onClick={(e) => e.stopPropagation()}
+              style={{ willChange: 'transform' }}
             >
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {selectedProjectImages.map((image, index) => (
-                  <img
+                  <motion.div
                     key={index}
-                    src={image}
-                    alt={`Project ${index + 1}`}
-                    className="rounded-lg shadow-lg object-cover max-h-[70vh] hover:scale-105 transition-transform"
-                  />
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                    className="relative overflow-hidden rounded-lg shadow-lg"
+                  >
+                    <img
+                      src={image}
+                      alt={`Project ${index + 1}`}
+                      className="w-full h-[60vh] object-cover transition-transform duration-300 ease-in-out"
+                      loading="lazy"
+                      style={{ willChange: 'transform' }}
+                    />
+                  </motion.div>
                 ))}
               </div>
               <button
                 onClick={closeModal}
-                className="mt-6 block mx-auto px-6 py-3 bg-amber-600 text-white rounded-full hover:bg-amber-700 transition"
+                className="mt-6 block mx-auto px-6 py-3 bg-gradient-to-r from-orange-400 to-orange-500 text-white rounded-full hover:from-orange-500 hover:to-orange-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
                 Close
               </button>

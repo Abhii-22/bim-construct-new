@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { MapPin, Mail, Phone, Clock } from "lucide-react";
+import { MapPin, Mail, Phone, Clock, Send, CheckCircle, AlertCircle, Calendar, MessageSquare } from "lucide-react";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +9,12 @@ const ContactPage = () => {
     phone: "",
     subject: "",
     message: ""
+  });
+
+  const [formStatus, setFormStatus] = useState({
+    submitted: false,
+    success: false,
+    message: "",
   });
 
   const handleChange = (e) => {
@@ -23,7 +29,11 @@ const ContactPage = () => {
     e.preventDefault();
     // Handle form submission here
     console.log("Form submitted:", formData);
-    alert("Thank you for your message. We'll get back to you soon!");
+    setFormStatus({
+      submitted: true,
+      success: true,
+      message: "Thank you! Your message has been sent successfully. We'll contact you shortly to discuss your project.",
+    });
     setFormData({
       name: "",
       email: "",
@@ -36,8 +46,9 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
-        <div className="container mx-auto px-4">
+      <section className="relative py-20 bg-gradient-to-br from-blue-200 via-orange-100 to-amber-100 text-gray-900">
+        <div className="absolute inset-0 bg-black/20 backdrop-blur-sm"></div>
+        <div className="relative container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <motion.h1 
               className="text-4xl md:text-6xl font-bold mb-6"
@@ -48,7 +59,7 @@ const ContactPage = () => {
               Get In Touch
             </motion.h1>
             <motion.p 
-              className="text-xl text-gray-300 max-w-3xl mx-auto"
+              className="text-xl text-gray-700 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -60,81 +71,82 @@ const ContactPage = () => {
       </section>
 
       {/* Contact Info & Form */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
             {/* Contact Information */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">Contact Information</h2>
-              
+            <div>
+              <div className="mb-12">
+                <div className="inline-block px-3 py-1 text-sm font-medium text-orange-600 bg-orange-50 rounded-full mb-4">
+                  Get In Touch
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+                  Contact information
+                </h2>
+              </div>
+
               <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="bg-amber-100 p-3 rounded-full text-amber-600 mr-4">
-                    <MapPin size={20} />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Our Office</h3>
-                    <p className="text-gray-600">123 Construction Ave, Building 45<br />San Francisco, CA 94107</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="bg-amber-100 p-3 rounded-full text-amber-600 mr-4">
-                    <Mail size={20} />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Email Us</h3>
-                    <a href="mailto:info@bimconstruct.com" className="text-amber-600 hover:underline">info@bimconstruct.com</a>
-                    <p className="text-sm text-gray-500 mt-1">We'll respond within 24 hours</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="bg-amber-100 p-3 rounded-full text-amber-600 mr-4">
-                    <Phone size={20} />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Call Us</h3>
-                    <a href="tel:+11234567890" className="text-gray-600 hover:text-amber-600">+1 (123) 456-7890</a>
-                    <p className="text-sm text-gray-500 mt-1">Mon-Fri from 8am to 6pm</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="bg-amber-100 p-3 rounded-full text-amber-600 mr-4">
-                    <Clock size={20} />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Working Hours</h3>
-                    <p className="text-gray-600">Monday - Friday: 9:00 - 18:00</p>
-                    <p className="text-gray-600">Saturday: 10:00 - 15:00</p>
-                    <p className="text-gray-600">Sunday: Closed</p>
-                  </div>
-                </div>
+                {[
+                  {
+                    icon: <Mail className="w-5 h-5" />,
+                    title: "Email Us",
+                    content: "connect@medini.in",
+                    link: "mailto:connect@medini.in",
+                  },
+                  {
+                    icon: <Phone className="w-5 h-5" />,
+                    title: "Call Us",
+                    content: "+91 9900081006 ",
+                    link: "tel:9900081006 ",
+                  },
+                  {
+                    icon: <MapPin className="w-5 h-5" />,
+                    title: "Visit Our Company",
+                    content: "XGCP+9J3, MRCR Layout, MC Layout, Vijayanagar, Bengaluru, Karnataka 560040",
+                  },
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="flex items-start"
+                  >
+                    <div className="p-3 rounded-full bg-orange-50 text-orange-500 mr-4">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-1">{item.title}</h3>
+                      <a
+                        href={item.link}
+                        className="text-gray-600 hover:text-orange-500 transition-colors"
+                      >
+                        {item.content}
+                      </a>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
 
-              <div className="mt-10">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Follow Us</h3>
-                <div className="flex space-x-4">
-                  {['Facebook', 'Twitter', 'LinkedIn', 'Instagram'].map((social, index) => (
-                    <a 
-                      key={index}
-                      href="#" 
-                      className="w-10 h-10 rounded-full bg-gray-100 hover:bg-amber-500 hover:text-white flex items-center justify-center text-gray-600 transition-colors"
-                      aria-label={social}
-                    >
-                      <span className="sr-only">{social}</span>
-                      {social.charAt(0)}
-                    </a>
-                  ))}
-                </div>
+              {/* Studio hours */}
+              <div className="mt-12 bg-orange-50 rounded-xl p-6">
+                <h3 className="text-lg font-semibold mb-4 flex items-center text-gray-900">
+                  <Clock className="w-5 h-5 mr-2 text-orange-500" />
+                  Studio Hours
+                </h3>
+                <ul className="space-y-2 text-gray-600">
+                  <li className="flex justify-between">
+                    <span>Monday - Saturday</span>
+                    <span>9:00 AM - 8:30 PM</span>
+                  </li>
+                  <li className="flex justify-between">
+                    <span>Sunday</span>
+                    <span>Closed</span>
+                  </li>
+                </ul>
               </div>
-            </motion.div>
+            </div>
 
             {/* Contact Form */}
             <motion.div
@@ -146,6 +158,27 @@ const ContactPage = () => {
             >
               <h2 className="text-3xl font-bold text-gray-900 mb-8">Send Us a Message</h2>
               
+              {formStatus.submitted && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`mb-6 p-4 rounded-lg ${
+                    formStatus.success 
+                      ? 'bg-green-50 text-green-800 border border-green-200' 
+                      : 'bg-red-50 text-red-800 border border-red-200'
+                  }`}
+                >
+                  <div className="flex items-center">
+                    {formStatus.success ? (
+                      <CheckCircle className="w-5 h-5 mr-2" />
+                    ) : (
+                      <AlertCircle className="w-5 h-5 mr-2" />
+                    )}
+                    {formStatus.message}
+                  </div>
+                </motion.div>
+              )}
+              
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
@@ -155,8 +188,8 @@ const ContactPage = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"
-                    placeholder="John Doe"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-orange-400 outline-none transition"
+                    placeholder="Your name"
                     required
                   />
                 </div>
@@ -170,8 +203,8 @@ const ContactPage = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"
-                      placeholder="john@example.com"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-orange-400 outline-none transition"
+                      placeholder="Your mail"
                       required
                     />
                   </div>
@@ -183,8 +216,8 @@ const ContactPage = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"
-                      placeholder="+1 (123) 456-7890"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-orange-400 outline-none transition"
+                      placeholder="Your phone number"
                     />
                   </div>
                 </div>
@@ -197,7 +230,7 @@ const ContactPage = () => {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-orange-400 outline-none transition"
                     placeholder="How can we help you?"
                     required
                   />
@@ -211,7 +244,7 @@ const ContactPage = () => {
                     rows="5"
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-orange-400 outline-none transition"
                     placeholder="Tell us about your project..."
                     required
                   ></textarea>
@@ -222,17 +255,17 @@ const ContactPage = () => {
                     type="checkbox"
                     id="privacy"
                     name="privacy"
-                    className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded"
+                    className="h-4 w-4 text-orange-500 focus:ring-orange-400 border-gray-200 rounded"
                     required
                   />
                   <label htmlFor="privacy" className="ml-2 block text-sm text-gray-700">
-                    I agree to the <a href="#" className="text-amber-600 hover:underline">Privacy Policy</a> and <a href="#" className="text-amber-600 hover:underline">Terms of Service</a>
+                    I agree to <a href="#" className="text-orange-500 hover:underline">Privacy Policy</a> and <a href="#" className="text-orange-500 hover:underline">Terms of Service</a>
                   </label>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg"
+                  className="w-full bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
                 >
                   Send Message
                 </button>
@@ -244,16 +277,23 @@ const ContactPage = () => {
 
       {/* Map Section */}
       <section className="h-96 relative">
-        <div className="absolute inset-0 bg-gray-200">
-          {/* Replace with your actual map embed code */}
-          <div className="w-full h-full flex items-center justify-center text-gray-400">
-            <div className="text-center">
-              <div className="text-4xl mb-2">📍</div>
-              <p>Interactive Map Here</p>
-              <p className="text-sm mt-1">(Google Maps or similar integration)</p>
-            </div>
-          </div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 h-full"
+        >
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3756.389242819478!2d77.5365649822572!3d12.970908380531256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3ddc28f1fc77%3A0x55fded85a4ed8fdf!2sXGCP%2B9J3%2C%20MRCR%20Layout%2C%20Stage%202%2C%20Vijayanagar%2C%20Bengaluru%2C%20Karnataka%20560040!5e1!3m2!1sen!2sin!4v1769143272678!5m2!1sen!2sin" 
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </motion.div>
       </section>
     </div>
   );

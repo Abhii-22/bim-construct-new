@@ -1,5 +1,4 @@
 
-import BimContactSection from "../../components/BIM/Contact";
 import HeroSection from "../../components/BIM/HeroSection";
 import Feedback from "../../components/BIM/Feedback";
 
@@ -10,7 +9,6 @@ export default function BIMHome() {
       {/* <CoursesHero /> */}
       {/* <ServicessSection /> */}
       <Feedback />
-      <BimContactSection />
     </div>
   )
 }
